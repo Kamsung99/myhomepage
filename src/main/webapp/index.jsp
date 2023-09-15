@@ -62,13 +62,7 @@ pageEncoding="UTF-8"%>
       </button>
     </div>
 
-    <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
   <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-3 mb-3 text-center">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
@@ -101,8 +95,6 @@ pageEncoding="UTF-8"%>
         <p>간단한 웹 게임으로 시간 보내기!</p>
         <p><a class="btn btn-secondary" href="<%=root%>/webgame/web_home.jsp">View details &raquo;</a></p>
       </div>
-
-      <!-- START THE FEATURETTES -->
 
     <hr class="featurette-divider">
 
@@ -179,8 +171,6 @@ pageEncoding="UTF-8"%>
     </div>
 
     <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
 
     </div>
 
