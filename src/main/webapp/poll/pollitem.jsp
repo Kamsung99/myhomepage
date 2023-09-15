@@ -48,7 +48,7 @@ String color[] = {"bg-success","bg-info","bg-warning","bg-danger","bg-dark","bg-
 
     // 투표 종료 시 경고 창 표시
     function showVoteClosedAlert() {
-        alert('투표가 아닙니다.');
+        alert('투표기간이 아닙니다.');
     }
 </script>
 </head>
