@@ -26,6 +26,7 @@
   </head>
  
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <div id="screen" class="waiting">클릭해서 시작하세요</div>
     <div id="result"></div>
   </body>

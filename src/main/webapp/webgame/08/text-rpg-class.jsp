@@ -7,6 +7,7 @@
   </head>
  
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <form id="start-screen">
       <input id="name-input" placeholder="주인공 이름을 입력하세요!" />
       <button id="start">시작</button>

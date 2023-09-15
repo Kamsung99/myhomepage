@@ -20,6 +20,7 @@
   </head>
  
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <!-- <table>
     <tr>
       <td></td>

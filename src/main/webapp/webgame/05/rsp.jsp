@@ -13,6 +13,7 @@
   </head>
  
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <div id="computer"></div>
     <div>
       <button id="scissors" class="btn">가위</button>

@@ -8,6 +8,7 @@
     <title>숫자야구</title>
   </head>
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <form id="form">
       <input type="text" id="input" />
       <button>확인</button>

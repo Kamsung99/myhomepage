@@ -20,6 +20,7 @@
 </head>
  
 <body>
+  <jsp:include page="/menu/top.jsp" />
   <div id="result">추첨 결과는?</div>
   <div id="bonus">보너스:</div>
 </body>

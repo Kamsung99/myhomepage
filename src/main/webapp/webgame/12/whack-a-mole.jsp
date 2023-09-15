@@ -59,6 +59,7 @@
     </style>
   </head>
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <div>
       <span id="timer">8</span>초&nbsp; <span id="score">0</span>점
       <button id="start">시작</button>

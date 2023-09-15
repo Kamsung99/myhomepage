@@ -29,6 +29,7 @@
     </style>
   </head>
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <form id="form">
       <input placeholder="가로 줄" id="row" size="5" />
       <input placeholder="세로 줄" id="cell" size="5" />

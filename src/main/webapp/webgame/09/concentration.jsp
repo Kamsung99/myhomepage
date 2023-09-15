@@ -47,6 +47,7 @@
     </style>
   </head>
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <div id="wrapper"></div>
   </body>
 </html>

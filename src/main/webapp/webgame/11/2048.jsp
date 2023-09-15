@@ -67,6 +67,7 @@
     </style>
   </head>
   <body>
+    <jsp:include page="/menu/top.jsp" />
     <table id="table"></table>
     <div id="score">0</div>
   </body>

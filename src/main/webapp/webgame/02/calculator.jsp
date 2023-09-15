@@ -30,6 +30,7 @@
  
 <!-- 계산기 버튼 구현 -->
 <body>
+  <jsp:include page="/menu/top.jsp" />
   <input readonly id="operator" />
   <input readonly type="number" id="result" /> <!-- 숫자만 입력 -->
   <div class="row">
