@@ -45,16 +45,32 @@ String color[] = {"bg-success","bg-info","bg-warning","bg-danger","bg-dark","bg-
         }
  
     }
+
+    // 투표 종료 시 경고 창 표시
+    function showVoteClosedAlert() {
+        alert('투표가 아닙니다.');
+    }
 </script>
 </head>
 <body>
+
 <div class="container mt-2">
     <h4>설문 정보</h4>
     <%
     if (dto != null) {
     %>
-    <div class="container p-5 my-5 border">
-        <label class="m-10">설문 내용 : <%=dto.getQuestion()%></label>
+    <div class="container p-3 my-5 border">
+        <div class="text-center">
+            <label class="form-label">
+                <%=dto.getSdate()%> ~ <%=dto.getEdate()%>
+                <span class="m-l-7">(총 투표자 : <%=sum%>명)</span>
+            </label>
+        </div>
+        
+        <div class="text-center">
+            <label class="m-10">설문 내용 : <%=dto.getQuestion()%></label>
+        </div>
+        
         <form action="pollProc.jsp" class="p-3"
             onsubmit='return checkb(this)'>
             <%
@@ -83,14 +99,17 @@ String color[] = {"bg-success","bg-info","bg-warning","bg-danger","bg-dark","bg-
  
             LocalDate now = LocalDate.now(); //현재 날짜
             LocalDate edate_ = LocalDate.parse(dto.getEdate()); //설문 종료날짜
+            LocalDate sdate_ = LocalDate.parse(dto.getSdate()); //설문 시작날짜
+
             /* System.out.println(now);  
                System.out.println(edate_); */
  
-            if (dto.getActive() == 0 || now.isAfter(edate_)) { //종료페이지 지난날짜인 경우
+            if (dto.getActive() == 0 || now.isAfter(edate_) || now.isBefore(sdate_)) { //투표 날짜가 지나거나 이전인 경우
             %>
  
             <button type='button' class="btn btn-light mt-5"
-                data-bs-toggle="tooltip" title="투표기간 종료!">투표</button>
+                data-bs-toggle="tooltip" title="투표기간이 아닙니다!" onclick="showVoteClosedAlert()">투표</button>
+
             <%
             } else {
             %>
@@ -101,6 +120,15 @@ String color[] = {"bg-success","bg-info","bg-warning","bg-danger","bg-dark","bg-
  
             <button type="button" class="btn btn-light mt-5"
                 data-bs-toggle="modal" data-bs-target="#myModal">결과</button>
+            <%
+            if (dto.getActive() == 0 || now.isAfter(edate_) || now.isBefore(sdate_)) { //종료페이지 지난날짜인 경우
+            %>
+            <div class="text-center">
+                <label class="form-label m-10" style="color: red;">투표 기간이 아닙니다</label>
+            </div>
+            <%
+                }
+            %>
  
         </form>
     </div>
@@ -140,12 +168,12 @@ if (dto != null) { // 등록된 설문이 있는 경우
                     </li>
                 </ul>
  
-                <ol class="list-group list-group-numbered">
+                <ol class="list-group list-group">
                     <%
                     if (sum > 0) {
                         for (int i = 0; i < result.size(); i++) {
                             PollitemDTO idtor = result.get(i);
-                            String item = idtor.getItem();//아이템 
+                            String item = idtor.getItem();//아이템
                             int j = (int) (Math.random() * (color.length - 1) + 0);
                             String hRGB = color[j];
                             double count = idtor.getCount();//투표수
@@ -154,10 +182,19 @@ if (dto != null) { // 등록된 설문이 있는 경우
                             //System.out.println("radio:" + ratio);
                     %>
  
-                    <li class="list-group-item"><%=item%>
+                    <li class="list-group-item">
+                        <div class="fw-bold">
+                            <%=item%>
+                        </div>
+
+                        <div class="row">
+                            <div class="col text-start"><%=(int) count%>표</div>
+                            <div class="col text-end"><%=ratio%>%</div>
+                        </div>
+
                         <div class="progress">
                             <div class="progress-bar <%=hRGB%>" style="width:<%=ratio%>%"></div>
-                        </div> (<%=(int) count%>)
+                        </div>
                     </li>
                     <%
                         } //for

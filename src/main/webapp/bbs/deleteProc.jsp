@@ -3,9 +3,12 @@ include file="/ssi/ssi_bbs.jsp"%>
 <jsp:useBean id="dao" class="com.bbs.BbsDAO" />
 <jsp:useBean id="dto" class="com.bbs.BbsDTO" />
 <jsp:setProperty name="dto" property="*" />
-<% Map map = new HashMap(); map.put("bbsno", dto.getBbsno()); map.put("passwd",
-dto.getPasswd()); boolean pflag = dao.passCheck(map); boolean flag = false; if
-(pflag) flag = dao.delete(dto.getBbsno()); %>
+<% Map map = new HashMap();
+map.put("bbsno", dto.getBbsno());
+map.put("passwd", dto.getPasswd());
+boolean pflag = dao.passCheck(map);
+boolean flag = false;
+if (pflag) flag = dao.delete(dto.getBbsno()); %>
 <!DOCTYPE html>
 <html lang="en">
   <head>

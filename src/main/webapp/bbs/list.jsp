@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ include file="/ssi/ssi_bbs.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/ssi/ssi_bbs.jsp"%>
 <jsp:useBean id="dao" class="com.bbs.BbsDAO" />
 
 <%
@@ -28,7 +28,7 @@ pageEncoding="UTF-8"%> <%@ include file="/ssi/ssi_bbs.jsp"%>
     List<BbsDTO> list = dao.list(map);
 
     int total = dao.total(col, word);
-    // out.print("total: "+total);
+    //out.print("total: "+total);
 
     String url = "list.jsp";
          

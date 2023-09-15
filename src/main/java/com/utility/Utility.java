@@ -4,8 +4,53 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.io.File;
+import java.text.SimpleDateFormat;
 
 public class Utility {
+
+    public static String getCorrectionDay(String filePath) {
+        // 파일 경로 설정
+
+        String fileDirectory = "src/main/webapp" + filePath;
+
+        // File 객체 생성
+        File file = new File(fileDirectory);
+       
+        // 참조하고 있는 파일의 절대 경로
+        // System.out.println(file.getAbsolutePath());
+
+        // 파일의 최종 수정 시간 가져오기
+        long lastModified = file.lastModified();
+
+        // 현재 시간 구하기
+        long currentTime = System.currentTimeMillis();
+
+        // 시간 차이 계산
+        long timeDifference = currentTime - lastModified;
+
+        // 시간 단위로 변환
+        long seconds = timeDifference / 1000;
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        long days = hours / 24;
+
+        String formattedDate;
+
+        if (days > 0) {
+            formattedDate = days + " days ago";
+        } else if (hours > 0) {
+            formattedDate = hours + " hours ago";
+        } else if (minutes > 0) {
+            formattedDate = minutes + " minutes ago";
+        } else {
+            formattedDate = seconds + " seconds ago";
+        }
+
+        return formattedDate;
+    }
+
+
     
      /**
      * 오늘,어제,그제 날짜 가져오기

@@ -28,3 +28,4 @@ out/
 .vscode/
 ### git_token, name, email ###
 .git_config/
+gradle-8.2.1-bin.zip

@@ -12,6 +12,32 @@ import com.utility.DBOpen;
 
 public class PollDAO {
 
+    public boolean delete(int num){
+        boolean flag = false;
+        Connection con = DBOpen.getConnection();
+        PreparedStatement pstmt = null;
+        StringBuffer sql = new StringBuffer();
+        sql.append(" delete from poll ");
+        sql.append(" where num = ? ");
+        
+        try {
+                pstmt = con.prepareStatement(sql.toString());
+                pstmt.setInt(1, num);
+        
+                int cnt = pstmt.executeUpdate();
+                
+                if(cnt>0) flag = true;
+        
+        } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+        } finally {
+                DBClose.close(pstmt,con);
+        }
+        
+        return flag;
+        }
+        
     public PollDTO read(int num) {
         PollDTO dto = null;
         Connection con = DBOpen.getConnection();
@@ -28,7 +54,9 @@ public class PollDAO {
                 dto.setQuestion(rs.getString("question"));
                 dto.setType(rs.getInt("type"));
                 dto.setActive(rs.getInt("active"));
+                dto.setSdate(rs.getString("sdate"));
                 dto.setEdate(rs.getString("edate"));
+                dto.setWdate(rs.getString("wdate"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,14 +73,15 @@ public class PollDAO {
             PreparedStatement pstmt = null;
             
             StringBuffer sql = new StringBuffer();
-            sql.append(" insert poll(question,sdate,edate,wdate,type) ");
-            sql.append(" values(?,?,?,now(),?) ");
+            sql.append(" insert poll(num,question,sdate,edate,wdate,type) ");
+            sql.append(" values(?,?,?,?,now(),?) ");
             try {
                     pstmt = con.prepareStatement(sql.toString());
-                    pstmt.setString(1, dto.getQuestion());
-                    pstmt.setString(2, dto.getSdate());
-                    pstmt.setString(3, dto.getEdate());
-                    pstmt.setInt(4, dto.getType());
+                    pstmt.setInt(1, getMaxNum()+1);
+                    pstmt.setString(2, dto.getQuestion());
+                    pstmt.setString(3, dto.getSdate());
+                    pstmt.setString(4, dto.getEdate());
+                    pstmt.setInt(5, dto.getType());
 
                     int result = pstmt.executeUpdate();
                     if (result > 0) {

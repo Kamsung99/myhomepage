@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@
-include file="/ssi/ssi_bbs.jsp" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/ssi/ssi_bbs.jsp" %>
 <jsp:useBean id="dao" class="com.bbs.BbsDAO" />
-<% int bbsno = Integer.parseInt(request.getParameter("bbsno")); BbsDTO dto =
-dao.read(bbsno); %>
+<% int bbsno = Integer.parseInt(request.getParameter("bbsno"));
+BbsDTO dto = dao.read(bbsno); %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,10 +21,9 @@ dao.read(bbsno); %>
       <p id="red">삭제하면 복구할 수 없습니다</p>
       <form action="deleteProc.jsp" method="post">
         <input type="hidden" name="bbsno" value="<%=dto.getBbsno() %>" />
-        <input type="hidden" name="nowPage"
-        value="<%=request.getParameter("nowPage") %>" /> <input type="hidden"
-        name="col" value="<%=request.getParameter("col") %>" /> <input
-        type="hidden" name="word" value="<%=request.getParameter("word") %>" />
+        <input type="hidden" name="nowPage" value="<%=request.getParameter("nowPage") %>" />
+        <input type="hidden" name="col" value="<%=request.getParameter("col") %>" />
+        <input type="hidden" name="word" value="<%=request.getParameter("word") %>" />
 
         <div class="row">
           <div class="col">

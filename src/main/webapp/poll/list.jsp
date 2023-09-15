@@ -91,6 +91,7 @@ function section(n) {
                   <th>번호</th>
                   <th>제목</th>
                   <th>시작일 ~ 종료일</th>
+                  <th>삭제</th> <!-- 삭제 버튼 열 추가 -->
               </tr>
           </thead>
 
@@ -100,7 +101,7 @@ function section(n) {
           %>
           
             <tr>
-              <td colspan='3'>등록된 설문이 없습니다.</td>
+              <td colspan='4'>등록된 설문이 없습니다.</td>
             </tr>
          
           <%
@@ -111,9 +112,23 @@ function section(n) {
  
             <tr>
               <td><%=dto.getNum()%></td>
-              <td><a class="nav-link"
-                      href="javascript:section('<%=dto.getNum()%>')"><%=dto.getQuestion()%></a></td>
-              <td><%=dto.getSdate()%> ~ <%=dto.getEdate()%></td>
+              <td>
+                <a class="nav-link" href="javascript:section('<%=dto.getNum()%>')"><%=dto.getQuestion()%></a>
+              </td>
+              <td>
+                <%=dto.getSdate()%> ~ <%=dto.getEdate()%>
+              </td>
+              <td>
+                <form action="deleteProc.jsp" method="post">
+                    <input type="hidden" name="num" value="<%=dto.getNum() %>" />
+            
+                    <div class="row">
+                      <div class="col">
+                        <button class="btn btn-outline-dark">삭제</button>
+                      </div>
+                    </div>
+                </form>
+              </td>
            </tr>
           
           <%
